@@ -26,8 +26,8 @@ public class MapSetTest {
 
     @Test
     public void getValue() {
-        assertTrue("getValue pt 1", set.getValue("Archer").equals("Jonathan"));
-        assertFalse("getValue pt 2", set.getValue("Archer").equals("James"));
+        assertTrue("getValue pt 1", set.getValue("Archer").contentEquals("Jonathan"));
+        assertFalse("getValue pt 2", set.getValue("Archer").contentEquals("James"));
     }
 
     @Test
