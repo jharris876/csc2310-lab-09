@@ -1,3 +1,6 @@
+
+import java.security.Key;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -16,6 +19,11 @@ public class MapSet<T>{
      * @return true if the element is successfully added
      */
     public boolean add(String key, T value){
+
+        KeyValuePair<T> obj = new KeyValuePair<>(key,value);
+        if(collection.add(obj)){
+            return true;
+        }
         return false;
     }
 
@@ -25,6 +33,12 @@ public class MapSet<T>{
      * @return
      */
     public T getValue(String key){
+
+        for(KeyValuePair<T> obj: collection){
+            if(obj.getKey() == key){
+                return obj.getValue();
+            }
+        }
         return null;
     }
 
@@ -34,7 +48,14 @@ public class MapSet<T>{
      * @return
      */
     public boolean contains(String key){
+
+        for(KeyValuePair<T> obj: collection){
+            if(obj.getKey() == key){
+                return true;
+            }
+        }
         return false;
+
     }
 
     /**
@@ -42,7 +63,8 @@ public class MapSet<T>{
      * @return
      */
     public Iterator<KeyValuePair<T>> getIterator(){
-        return null;
+
+        return collection.iterator();
     }
 
 }
